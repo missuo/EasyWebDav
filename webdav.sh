@@ -89,7 +89,7 @@ deploy_webdav(){
         if [ ! -f "/usr/bin/webdav" ]; then
             echo "现在开始安装 WebDav..."
             echo ""
-            last_version=$(curl -Ls "https://api.github.com/repos/XrayR-project/XrayR/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+            last_version=$(curl -Ls "https://api.github.com/repos/hacdias/webdav/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
             if [[ ! -n "$last_version" ]]; then
                 echo -e "${red}检测 WebDav 版本失败，可能是超出 Github API 限制，请稍后再试。"
                 exit 1
@@ -103,7 +103,7 @@ deploy_webdav(){
             echo ""
             echo "开始启动 WebDav 并设置为开机自启..."
             echo ""
-            wget -N --no-check-certificate -O ${sysctl_dir}/webdav.service https://raw.githubusercontent.com/missuo/CloudflareWarp/master/webdav.service
+            wget -N --no-check-certificate -O ${sysctl_dir}/webdav.service https://cdn.jsdelivr.net/gh/missuo/EasyWebDav/webdav.service
             systemctl enable webdav.service
             systemctl start webdav.service
             public_ip=$(curl -s https://ipinfo.io/ip)
@@ -114,7 +114,7 @@ deploy_webdav(){
             echo "WebDav 访问地址: ${public_ip}:${listen_port}"
             echo "------------------------------------------------"
             echo "WebDav 启动成功！如果要开启域名访问，请自行设置反向代理！"
-        fi
+
         else
             echo "你已经安装 WebDav 服务！"
         fi
