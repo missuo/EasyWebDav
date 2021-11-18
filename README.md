@@ -18,6 +18,11 @@ Quick and easy to set up WebDav server on Linux Server
 wget -O webdav.sh https://cdn.jsdelivr.net/gh/missuo/EasyWebDav/webdav.sh && bash webdav.sh
 ~~~
 
+### Cautions
+- The latest version of WebDav will be used by default.
+- If it does not run successfully, please check yourself if the port is occupied.
+- If the public IP: port is not accessible, please check if the firewall is open for this port.
+
 ### Configuring reverse proxy
 ~~~nginx
 location / {
@@ -42,7 +47,7 @@ location / {
 
 
 ## Other Open-Source Code Used
-[hacdias/webdav](https://github.com/hacdias/webdav)
+[https://github.com/hacdias/webdav](https://github.com/hacdias/webdav)
 
 Thanks to the above authors for the Go language version of webdav
 
