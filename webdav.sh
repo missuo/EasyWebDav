@@ -60,7 +60,7 @@ check_sys(){
 check_sys
 
 config_webdav(){
-    wget -N --no-check-certificate -O /etc/webdav.yaml https://cdn.jsdelivr.net/gh/missuo/EasyWebDav/webdav.yaml
+    wget -N --no-check-certificate -O /etc/webdav.yaml https://raw.githubusercontent.com/missuo/EasyWebDav/main/webdav.yaml
     echo "现在开始配置 WebDav 的参数..."
     echo ""
     read -p "请输入监听的端口:" listen_port
@@ -103,7 +103,7 @@ deploy_webdav(){
             echo ""
             echo "开始启动 WebDav 并设置为开机自启..."
             echo ""
-            wget -N --no-check-certificate -O ${sysctl_dir}/webdav.service https://cdn.jsdelivr.net/gh/missuo/EasyWebDav/webdav.service
+            wget -N --no-check-certificate -O ${sysctl_dir}/webdav.service https://raw.githubusercontent.com/missuo/EasyWebDav/main/webdav.service
             systemctl enable webdav.service
             systemctl start webdav.service
             public_ip=$(curl -s https://ipinfo.io/ip)
