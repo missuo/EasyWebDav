@@ -57,7 +57,6 @@ check_sys(){
 		exit 1
 	fi
 }
-check_sys
 
 config_webdav(){
     wget -N --no-check-certificate -O /etc/webdav.yaml https://raw.githubusercontent.com/missuo/EasyWebDav/main/webdav.yaml
@@ -79,14 +78,14 @@ config_webdav(){
     sed -i "s/port:.*/port: ${listen_port}/g" /etc/webdav.yaml
     sed -i "s/username:.*/username: ${username}/g" /etc/webdav.yaml
     sed -i "s/password:.*/password: ${password}/g" /etc/webdav.yaml
-    sed -i "s/scope:.*/scope: ${scope}/g" /etc/webdav.yaml
+    sed -i "s/scope:.*/scope: \${scope}/g" /etc/webdav.yaml
     echo "配置文件写入完成！"
     echo ""
 }
 
 
 deploy_webdav(){
-        if [ ! -f "/usr/bin/webdav" ]; then
+        
             echo "现在开始安装 WebDav..."
             echo ""
             last_version=$(curl -Ls "https://api.github.com/repos/hacdias/webdav/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
@@ -114,12 +113,58 @@ deploy_webdav(){
             echo "WebDav 访问地址: ${public_ip}:${listen_port}"
             echo "------------------------------------------------"
             echo "WebDav 启动成功！如果要开启域名访问，请自行设置反向代理！"
-
-        else
-            echo "你已经安装 WebDav 服务！"
-        fi
-
 }
 
-config_webdav
-deploy_webdav
+# 检查是否已安装
+check_installed_status(){
+    if [ ! -f "/usr/bin/webdav" ]; then
+        check_sys
+        config_webdav
+        deploy_webdav
+    else
+            echo "你已经安装 WebDav 服务！"
+            exit 1
+    fi
+}
+
+uninstall_webdav(){
+    echo "现在开始卸载 WebDav..."
+    echo ""
+    systemctl stop webdav.service
+    systemctl disable webdav.service
+    rm -rf ${sysctl_dir}/webdav.service
+    rm -rf /usr/bin/webdav
+    echo "WebDav 卸载完成！"
+    echo ""
+}
+
+start_menu(){
+		clear
+		echo && echo -e "EasyWebDav Made by missuo
+更新内容及反馈： https://github.com/missuo/EasyWebDav
+————————————模式选择————————————
+${green}1.${plain} 开始安装 WebDav
+${green}2.${plain} 彻底卸载 WebDav
+${green}0.${plain} 退出脚本
+————————————————————————————————"
+	read -p "请输入数字: " num
+	case "$num" in
+	1)
+		check_installed_status
+		;;
+	2)
+		uninstall_webdav
+		;;
+    0)
+        exit 1
+        ;;
+	*)
+		clear
+		echo -e "[${red}错误${plain}]:请输入正确数字[0-5]"
+		sleep 5s
+		start_menu
+		;;
+	esac
+}
+start_menu 
+
