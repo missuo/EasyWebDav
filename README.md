@@ -15,7 +15,7 @@ Quick and easy to set up WebDav server on Linux Server
 ## Usage
 ### Install webdav-server
 ~~~shell
-wget -O warp.sh https://cdn.jsdelivr.net/gh/missuo/EasyWebDav/webdav.sh && bash webdav.sh
+wget -O webdav.sh https://cdn.jsdelivr.net/gh/missuo/EasyWebDav/webdav.sh && bash webdav.sh
 ~~~
 
 ### Configuring reverse proxy
@@ -33,6 +33,9 @@ location / {
 ## How to mount
 ### Mac
 ![image](https://user-images.githubusercontent.com/55200481/142374705-cd29edec-9b01-4081-92e1-e9085697cbbd.png)
+
+- Finder mounts are not recommended on newer versions of macOS. It's exceptionally slow, so if you know how to fix this, please let me know.
+- You can use a third-party mount app to replace it.
 
 ### Windows
 [Reference Tutorial](https://blog.frankutils.xyz/archives/17/)
