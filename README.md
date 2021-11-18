@@ -15,7 +15,7 @@ Quick and easy to set up WebDav server on Linux Server
 ## Usage
 ### Install webdav-server
 ~~~shell
-wget -O webdav.sh https://cdn.jsdelivr.net/gh/missuo/EasyWebDav/webdav.sh && bash webdav.sh
+wget -O webdav.sh https://raw.githubusercontent.com/missuo/EasyWebDav/main/webdav.sh && bash webdav.sh
 ~~~
 
 ### Configuring reverse proxy
