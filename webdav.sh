@@ -45,13 +45,13 @@ check_sys(){
 	# 根据系统类型确定
 	if [ $release = "Centos" ]
 	then
-		sysctl_dir="/usr/lib/systemd/system/"
+		sysctl_dir="/usr/lib/systemd/system"
 	elif [ $release = "Debian" ]
 	then
-		sysctl_dir="/etc/systemd/system/"
+		sysctl_dir="/etc/systemd/system"
 	elif [ $release = "Ubuntu" ]
 	then
-		sysctl_dir="/lib/systemd/system/"
+		sysctl_dir="/lib/systemd/system"
 	else
 		echo -e "[${red}错误${plain}]不支持当前系统"
 		exit 1
@@ -69,8 +69,8 @@ config_webdav(){
     read -p "请输入WebDav访问账号:" username
     [ -z "${username}" ]
     echo ""
-    read -p "请输入WebDav访问密码:" username
-    [ -z "${username}" ]
+    read -p "请输入WebDav访问密码:" password
+    [ -z "${password}" ]
     echo ""
     read -p "请输入WebDav的路径(默认/root):" scope
     [ -z "${scope}" ]
