@@ -32,10 +32,10 @@ location / {
 
 ## How to mount
 ### Mac
-- Use Finder
 ![image](https://user-images.githubusercontent.com/55200481/142374705-cd29edec-9b01-4081-92e1-e9085697cbbd.png)
 
-- [On Windows](https://blog.frankutils.xyz/archives/17/)
+### Windows
+[Reference Tutorial](https://blog.frankutils.xyz/archives/17/)
 
 
 ## Other Open-Source Code Used
