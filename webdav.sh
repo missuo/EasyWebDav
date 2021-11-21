@@ -160,7 +160,7 @@ ${green}0.${plain} 退出脚本
         ;;
 	*)
 		clear
-		echo -e "[${red}错误${plain}]:请输入正确数字[0-5]"
+		echo -e "[${red}错误${plain}]:请输入正确数字[0-2]"
 		sleep 5s
 		start_menu
 		;;
