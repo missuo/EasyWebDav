@@ -9,7 +9,7 @@ export PATH
 #	Version: 1.0
 #	Author: Vincent Young
 # 	Telegram: https://t.me/missuo
-#	Github: https://github.com/missuo/CloudflareWarp
+#	Github: https://github.com/missuo/EasyWebDav
 #	Latest Update: Nov 18, 2021
 #=================================================================
 
