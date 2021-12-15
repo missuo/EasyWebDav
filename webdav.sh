@@ -78,7 +78,8 @@ config_webdav(){
     sed -i "s/port:.*/port: ${listen_port}/g" /etc/webdav.yaml
     sed -i "s/username:.*/username: ${username}/g" /etc/webdav.yaml
     sed -i "s/password:.*/password: ${password}/g" /etc/webdav.yaml
-    sed -i "s/scope:.*/scope: \${scope}/g" /etc/webdav.yaml
+    scope=${scope//\//\\\/}
+    sed -i "s/scope:.*/scope: ${scope}/g" /etc/webdav.yaml
     echo "配置文件写入完成！"
     echo ""
 }
