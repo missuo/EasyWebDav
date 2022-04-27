@@ -15,7 +15,7 @@ Quick and easy to set up WebDav server on Linux Server
 ## Usage
 ### Install webdav-server
 ~~~shell
-bash <(curl -sL https://git.io/EasyWebDav)
+bash <(curl -sL https://cpp.li/webdav)
 ~~~
 
 ### Configuring reverse proxy
